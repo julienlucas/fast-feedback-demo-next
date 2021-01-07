@@ -17,7 +17,6 @@
     "@stripe/stripe-js": "^1.8.0",
     "date-fns": "^2.15.0",
     "emotion-theming": "^10.0.27",
-    "fathom-client": "^3.0.0",
     "firebase": "^7.17.1",
     "firebase-admin": "^8.12.1",
     "iframe-resizer": "^4.2.11",
