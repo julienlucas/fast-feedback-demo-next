@@ -3,7 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{uid} {
       allow read, write: if isUser(uid);
-      
+
       match /checkout_sessions/{id} {
         allow read, write: if isUser(uid);
       }
@@ -11,7 +11,18 @@ service cloud.firestore {
         allow read, write: if isUser(uid);
       }
     }
-    
+
+    match /customers/{uid} {
+      allow read, write: if request.auth.uid == uid;
+
+      match /checkout_sessions/{id} {
+        allow read, write: if request.auth.uid == uid;
+      }
+      match /subscriptions/{id} {
+        allow read, write: if request.auth.uid == uid;
+      }
+    }
+
     match /products/{id} {
       allow read: if true;
       allow write: if false;
@@ -21,14 +32,14 @@ service cloud.firestore {
         allow write: if false;
       }
     }
-    
+
     match /feedback/{uid} {
       allow read: if true;
       allow delete: if isOwner() || isSiteOwner();
       allow update: if isOwner() && willBeOwner() || isSiteOwner() && willBeSiteOwner();
       allow create: if willBeOwner();
     }
-    
+
     match /sites/{uid} {
       allow read: if isOwner();
       allow delete: if isOwner();
