@@ -1,4 +1,4 @@
-This is a repo from great concept saas app on Next from https://github.com/leerob/fastfeedback
+This is a repo from great concept saas app on Next.js from https://github.com/leerob/fastfeedback
 
 # Fast Feedback
 
